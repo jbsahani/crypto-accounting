@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import { getWallets } from '@/app/actions/wallet'
 import { getMonths } from '@/app/actions/month'
 import UploadForm from './upload-form'

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import { getWallets } from '@/app/actions/wallet'
 import WalletsClient from './wallets-client'
 
