@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import { getMonths } from '@/app/actions/month'
 import MonthsClient from './months-client'
 

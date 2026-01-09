@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import { getTransactions, getCategories } from '@/app/actions/transaction'
 import { getWallets } from '@/app/actions/wallet'
 import { getMonths } from '@/app/actions/month'

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import { getTransactions, getCategories, getDynamicMonths } from '@/app/actions/transaction'
 import { getWallets } from '@/app/actions/wallet'
 import { getImportBatches } from '@/app/actions/import-history'
