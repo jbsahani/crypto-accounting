@@ -1,0 +1,17 @@
+INSERT OR IGNORE INTO Category (id, name, type) VALUES 
+('1', 'Cypher Card Load', 'TRANSFER'),
+('2', 'Cypher Physical Card Charges', 'EXPENSE'),
+('3', 'Product Expense', 'EXPENSE'),
+('4', 'Personal Expense', 'EXPENSE'),
+('5', 'Travel Expense', 'EXPENSE'),
+('6', 'Fee Expense', 'EXPENSE'),
+('7', 'MasterCard to Visa', 'TRANSFER'),
+('8', 'Marketing Expense', 'EXPENSE'),
+('9', 'Swap Trade', 'TRANSFER'),
+('10', 'Salary', 'INCOME'),
+('11', 'Refund', 'INCOME'),
+('12', 'Loan', 'TRANSFER'),
+('13', 'Spam', 'EXPENSE'),
+('14', 'Revenue', 'INCOME'),
+('15', 'Business Expense', 'EXPENSE'),
+('16', 'Reimbursement', 'INCOME');

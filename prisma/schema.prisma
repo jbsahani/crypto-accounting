@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Wallet {
+  id           String        @id @default(cuid())
+  address      String
+  label        String?
+  chain        String        // ETH, MATIC, SOL
+  createdAt    DateTime      @default(now())
+  transactions Transaction[]
+}
+
+model AccountingMonth {
+  id        String   @id @default(cuid())
+  name      String   // "Jan 2024"
+  startDate DateTime
+  endDate   DateTime
+  status    String   @default("OPEN") // OPEN, LOCKED
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id           String        @id @default(cuid())
+  name         String        @unique
+  type         String        // INCOME, EXPENSE, TRANSFER
+  createdAt    DateTime      @default(now())
+  transactions Transaction[]
+}
+
+model Transaction {
+  id         String    @id @default(cuid())
+  hash       String
+  timestamp  DateTime
+  from       String
+  to         String
+  amount     Float     // Changed from Decimal to Float for better JS compatibility
+  symbol     String
+  chain      String
+  direction  String    // IN, OUT
+  walletId   String
+  wallet     Wallet    @relation(fields: [walletId], references: [id])
+  categoryId String?
+  category   Category? @relation(fields: [categoryId], references: [id])
+  notes      String?
+  isMapped   Boolean   @default(false)
+  usdValue   Float?    // Changed from Decimal to Float
+
+  createdAt  DateTime  @default(now())
+
+  importBatchId String?
+  importBatch   ImportBatch? @relation(fields: [importBatchId], references: [id])
+
+  @@unique([chain, hash, direction, walletId])
+}
+
+model ImportBatch {
+  id        String        @id @default(cuid())
+  filename  String
+  timestamp DateTime      @default(now())
+  txCount   Int
+  transactions Transaction[]
+}
